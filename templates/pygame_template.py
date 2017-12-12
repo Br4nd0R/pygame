@@ -1,56 +1,56 @@
-import pygame
+import pygame as pg
+from pygame.locals import *
  
 # COLORS
-BLACK = (0, 0, 0)
+BLACK = (  0,   0,   0)
 WHITE = (255, 255, 255)
-GREEN = (0, 255, 0)
-RED = (255, 0, 0)
- 
+RED =   (255,   0,   0)
+GREEN = (  0, 255,   0)
+BLUE =  (  0,   0, 255)
 
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 450
+
+GAME_NAME = "GAME_NAME_HERE"
 
 def main():
-    pygame.init()
-     
-    # SCREEN SIZE
-    size = (700, 500)
-    screen = pygame.display.set_mode(size)
-    pygame.display.set_caption("GAME_NAME_HERE")
-     
-    # Loop until the user clicks the close button.
-    done = False
-     
-    # Used to manage how fast the screen updates
-    clock = pygame.time.Clock()
 
-    # -------- Main Program Loop -----------
-    while not done:
-        # --- Main event loop
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                done = True
-     
-        # --- Game logic should go here
-     
-        # --- Screen-clearing code goes here
-     
-        # Here, we clear the screen to white. Don't put other drawing commands
-        # above this, or they will be erased with this command.
-     
-        # If you want a background image, replace this clear with blit'ing the
-        # background image.
-        screen.fill(WHITE)
-     
-        # --- Drawing code should go here
-     
-        # --- Go ahead and update the screen with what we've drawn.
-        pygame.display.flip()
-     
-        # --- Limit to 60 frames per second
-        clock.tick(60)
-     
-    # Close the window and quit.
-    pygame.quit()
+	pg.init() 
+	clock = pg.time.Clock()
+	# SCREEN SIZE
+	size = (SCREEN_WIDTH, SCREEN_HEIGHT)
+	screen = pg.display.set_mode(size)
+	pg.display.set_caption(GAME_NAME)
+	 
+	# Loop until the user clicks the close button.
+	done = False
+
+	# -------- Main Program Loop -----------
+	while not done:
+		# --- Main event loop
+		for event in pg.event.get():
+			if event.type == pg.QUIT:
+				done = True
+			if event.type == KEYUP:
+				if event.key == K_ESCAPE or event.key == K_q:
+				   done = True
+	 
+		# --- Game logic should go here
+	 
+		# --- Clear the Screen (or fill with BG)
+		screen.fill(WHITE)
+	 
+		# --- Drawing code should go here
+	 
+		# --- Go ahead and update the screen with what we've drawn.
+		pg.display.flip()
+	 
+		# --- Limit to 60 frames per second
+		clock.tick(60)
+	 
+	# Close the window and quit.
+	pg.quit()
 
 
 if __name__ == "__main__":
-    main()
+	main()
